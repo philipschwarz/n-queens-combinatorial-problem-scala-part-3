@@ -1,0 +1,1 @@
+Scala code for [N-Queens Combinatorial Problem - Polyglot FP for Fun and Profit – Haskell and Scala - Part 3](https://www.slideshare.net/pjschwarz/nqueens-combinatorial-problem-polyglot-fp-for-fun-and-profit-haskell-and-scala-part-3)
