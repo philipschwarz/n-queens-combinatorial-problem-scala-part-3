@@ -1,12 +1,10 @@
 package mainsecondversion
 
-import scala.language.postfixOps
-
-import queens._
-import graphics._
-
 import doodle.image.Image
+import graphics._
+import queens._
 
+import scala.language.postfixOps
 import scala.util.chaining._
 
 type Grid[A] = List[List[A]]
@@ -54,14 +52,16 @@ def makeImageGrid[A](as: List[A], makeImage: A => Image, gridWidth: Int): Grid[I
 /////////////
 
 def insertPadding(images: Grid[Image]): Grid[Image] =
-  import scalaz._, Scalaz._
+  import scalaz._
+  import Scalaz._
   images map (_ intersperse paddingImage) intersperse List(paddingImage)
 
 ///////////////
 // Combining //
 ///////////////
 
-import cats.implicits._, cats.Monoid
+import cats.Monoid
+import cats.implicits._
 val beside = Monoid.instance[Image](Image.empty, _ beside _)
 val above = Monoid.instance[Image](Image.empty, _ above _)
 def combine(imageGrid: List[List[Image]]): Image =

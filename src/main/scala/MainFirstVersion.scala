@@ -1,12 +1,10 @@
 package mainfirstversion
 
-import scala.language.postfixOps
-
-import queens._
-import graphics._
-
 import doodle.image.Image
+import graphics._
+import queens._
 
+import scala.language.postfixOps
 import scala.util.chaining._
 
 type Grid[A] = List[List[A]]
@@ -57,11 +55,9 @@ def combineWithPadding(images: Grid[Image]): Image =
   combineWithPadding(images, paddingImage)
 
 import cats.Monoid
-import doodle.core.Color
-import doodle.image.Image
+import cats.implicits._
 val beside = Monoid.instance[Image](Image.empty, _ beside _)
 val above = Monoid.instance[Image](Image.empty, _ above _)
 def combineWithPadding(images: Grid[Image], paddingImage: Image): Image =
-  import  cats.implicits._
   images.map(row => row.intercalate(paddingImage)(beside))
-    .intercalate(paddingImage)(above)  
+    .intercalate(paddingImage)(above)
